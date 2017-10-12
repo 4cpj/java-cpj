@@ -1,0 +1,10 @@
+/*  imported from Header.sass  */
+
+body{
+  margin: 0;
+  color: #333;
+  font-family: 'PingFang SC', 微软雅黑, 'Microsoft YaHei', Helvetica, 'Helvetica Neue', Tahoma, Arial, sans-serif;;
+}
+body,html{
+  height: 100%;
+}
