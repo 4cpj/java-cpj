@@ -1,13 +1,32 @@
 import React from 'react'
-import { bindActionCreators } from 'redux'
-import withRedux from 'next-redux-wrapper'
-import initStore from '../store'
-import {login} from '../action/'
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    login: bindActionCreators(login, dispatch)
-  }
-}
-
-export default withRedux(initStore, null, mapDispatchToProps)
+import { Provider } from 'mobx-react'
+import Store from '../store/'
+export default function WithConnect(PageComponent){
+  return function APP(){
+      class Page extends React.Component {
+          constructor (props) {
+            super(props)
+          }
+          render () {
+            return (
+              <PageComponent />
+            )
+          }
+      }
+      return function(Connect){
+          return class extends React.Component {
+            constructor (props) {
+              super(props)
+              this.store = Store
+            }
+            render() {
+              return (
+                <Provider store={this.store}>
+                  <Connect />
+                </Provider>
+              )
+            }
+          }
+      }
+  }()(PageComponent)
+};

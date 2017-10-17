@@ -1,3 +1,5 @@
+import {Theme} from '../config'
+
 export default (props) => (
     <style>
 	  {`
@@ -9,7 +11,6 @@ export default (props) => (
 		}
 		.header{
 			margin: 0 auto;
-			padding: 0 10px;
 			width: 1100px;
 			line-height: 70px;
 		}
@@ -19,7 +20,7 @@ export default (props) => (
 			margin-top: 15px;
 			width: 40px;
 			line-height: 40px;
-			background-color: #0f88eb;
+			background-color: ${Theme.primary};
 			border-radius: 50%;
 			text-align: center;
 			font-size: 16px;
@@ -57,6 +58,7 @@ export default (props) => (
 		}
 		a.login-nav:hover{
 			color: #0f88eb;
+			text-decoration: none
 		}
 		a.button-portrait{
 			position: relative;
@@ -78,7 +80,7 @@ export default (props) => (
 			overflow: hidden;
 		}
 		a.button-portrait:hover img{
-			border: 2px solid #0f88eb;
+			border: 2px solid ${Theme.primary};
 		}
 	  `}
 	</style>

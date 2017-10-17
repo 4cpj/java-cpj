@@ -3,12 +3,16 @@ import Link from 'next/link'
 import Search from '../../components/Search/'
 import Button from '../../components/Button/'
 import Style from './style'
+import { inject, observer } from 'mobx-react'
 
+@inject('store') @observer 
 class Header extends React.Component {
   constructor(props) {
     super(props);
   }
   render () {
+    const {userInfo} = this.props.store
+    console.log( this.props.store);
     return (
       <div className="header-wrapper">
         <div className="header">
@@ -21,9 +25,9 @@ class Header extends React.Component {
              <Button text="提问" /> 
              <Button text="写文章" className="button-write" style={{'margin': '0 5px', padding: '5px 12px'}}/>
               { 
-                this.props.userInfo.userName ? 
+                userInfo.userName ? 
                 <a className="button-portrait">
-                  <img src={this.props.userInfo.portrait ? this.props.userInfo.portrait : "./static/img/userIcon.png"}/>
+                  <img src={userInfo.portrait ? userInfo.portrait : "./static/img/userIcon.png"}/>
                 </a>
                 : 
                 <div className="loginWrapper-nav">
@@ -38,9 +42,9 @@ class Header extends React.Component {
       </div>
     )
   }
-  login ({props}) {
-    const {login} = this.props
-    login({userName: 'lijc',portrait: 'http://img1.sycdn.imooc.com/592e85a40001ce8102630265-100-100.jpg'})
+  login () { 
+    let {userInfo} = this.props.store
+    userInfo.login({userName: 'lijc',password: '000000',portrait: 'http://img1.sycdn.imooc.com/592e85a40001ce8102630265-100-100.jpg'})
   }
 
 }
