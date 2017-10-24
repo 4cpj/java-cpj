@@ -16,7 +16,7 @@ class Button extends React.Component {
   }
   render () {
     return (
-      <a style={this.props.style} className={"button-wrapper " + this.props.className} >
+      <a style={this.props.style} className={"button-wrapper " + this.props.className}  onClick={this.props.handleClick}>
          {this.props.text}
          <Style jsx/>
       </a>

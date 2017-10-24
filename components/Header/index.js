@@ -4,6 +4,7 @@ import Search from '../../components/Search/'
 import Button from '../../components/Button/'
 import Style from './style'
 import { inject, observer } from 'mobx-react'
+import LoginAndRegister from './../LoginAndRegister/LoginAndRegister'
 
 @inject('store') @observer 
 class Header extends React.Component {
@@ -39,6 +40,7 @@ class Header extends React.Component {
           </div>
           <Style jsx/>
         </div>
+        <LoginAndRegister/>
       </div>
     )
   }
